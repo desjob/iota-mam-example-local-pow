@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "curl.lib.js": "git+https://github.com/iotaledger/curl.lib.js.git#2da1de36123d89b0c7dcababe24f72828bc5f794",
-    "iota.lib.js": "iotaledger/iota.lib.js#v0.4.7",
-    "mam.client.js": "https://github.com/iotaledger/mam.client.js#4f56f8f",
+    "@iota/mam": "^0.7.2",
+    "curl-transaction-core": "^1.0.3",
+    "curl-transaction-webgl2-impl": "^1.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
