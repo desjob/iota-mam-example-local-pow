@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/iota-mam-example-local-pow/static/css/main.2cce8147.chunk.css",
+    "main.js": "/iota-mam-example-local-pow/static/js/main.858f86e9.chunk.js",
+    "main.js.map": "/iota-mam-example-local-pow/static/js/main.858f86e9.chunk.js.map",
+    "runtime~main.js": "/iota-mam-example-local-pow/static/js/runtime~main.6b25b2a7.js",
+    "runtime~main.js.map": "/iota-mam-example-local-pow/static/js/runtime~main.6b25b2a7.js.map",
+    "static/js/2.21e043ab.chunk.js": "/iota-mam-example-local-pow/static/js/2.21e043ab.chunk.js",
+    "static/js/2.21e043ab.chunk.js.map": "/iota-mam-example-local-pow/static/js/2.21e043ab.chunk.js.map",
+    "index.html": "/iota-mam-example-local-pow/index.html",
+    "precache-manifest.f7d27dc06f4cd01d955748313680ae52.js": "/iota-mam-example-local-pow/precache-manifest.f7d27dc06f4cd01d955748313680ae52.js",
+    "service-worker.js": "/iota-mam-example-local-pow/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/iota-mam-example-local-pow/static/css/main.2cce8147.chunk.css.map"
+  }
+}
