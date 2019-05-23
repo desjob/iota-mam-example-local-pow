@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/iota-mam-example-local-pow/precache-manifest.f7d27dc06f4cd01d955748313680ae52.js"
+  "/iota-mam-example-local-pow/precache-manifest.755d13d5544f300793571b1fccb2be96.js"
 );
 
 self.addEventListener('message', (event) => {
