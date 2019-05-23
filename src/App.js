@@ -1,12 +1,9 @@
 import React from 'react';
 import './App.css';
-
 import * as Converter from '@iota/converter';
 import * as Mam from '@iota/mam';
 import curlTransaction from 'curl-transaction-core';
 import curlImpl from 'curl-transaction-webgl2-impl';
-
-
 
 const curl = curlTransaction({ curlImpl });
 const localAttachToTangle = async function(trunkTransaction, branchTransaction, minWeightMagnitude, trytesArray) {
@@ -19,7 +16,6 @@ const localAttachToTangle = async function(trunkTransaction, branchTransaction, 
 
     return trytes;
 };
-
 
 class App extends React.Component {
 
@@ -50,7 +46,7 @@ class App extends React.Component {
 
         Mam.attach(message.payload, message.address, 3, 9)
             .then(res => this.messageIsPublished(res, message))
-            .catch(err => console.log(err));
+            .catch(err => this.onPublishError(err));
 
     }
 
@@ -71,31 +67,56 @@ class App extends React.Component {
         const mamState = Mam.init(mamConfig);
 
         Mam.fetch(this.state.root, 'public')
-            .then(res => this.setState({status2: 'recieved: ' + Converter.trytesToAscii(res.messages[0])}))
-            .catch(err => console.log(err));
+            .then(res => {
+                if(typeof res.messages !== 'undefined') {
+                    this.setState({status2: 'recieved: ' + Converter.trytesToAscii(res.messages[0])})
+                } else {
+                    this.onReceiveError("no valid response");
+                }
 
+            })
+            .catch(err => this.onReceiveError(err));
+
+    }
+
+    onReceiveError(error) {
+        this.setState({status2: 'error while receiving, see console for details'});
+
+        console.log(error);
+    }
+
+    onPublishError(error) {
+        this.setState({status: 'error while publishing, see console for details'});
+
+        console.log(error);
     }
 
     setRoot(root) {
-
         this.setState({root: root});
     }
 
-    setMessage(message) {
+    onRootChange(event) {
+        this.setRoot(event.target.value);
+    }
 
+    setMessage(message) {
         this.setState({message: message});
+    }
+
+    onMessageChange(event) {
+        this.setMessage(event.target.value);
     }
 
     render() {
         return (
             <div>
                 <h1>IOTA Masked Authenticated Messaging example (using local WebGL PoW)</h1>
-                <input type="text" onChange={this.setMessage.bind(this)} value={this.state.message}/>
+                <input type="text" onChange={this.onMessageChange.bind(this)} value={this.state.message}/>
                 <button onClick={this.publishMamMessage.bind(this)}>Publish!</button>
                 <p>status: <br/>{this.state.status}</p>
 
                 <hr/>
-                <input type="text" onChange={this.setRoot.bind(this)} value={this.state.root}/>
+                <input type="text" onChange={this.onRootChange.bind(this)} value={this.state.root}/>
                 <button onClick={this.receiveMessage.bind(this)}>Receive!</button>
                 <p>status: <br/>{this.state.status2}</p>
             </div>
